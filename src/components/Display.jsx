@@ -14,7 +14,8 @@ const Display = () => {
         setEditText(todo.text)
     }
 
-    const saveAndExit = (index) => {
+    const saveAndExit = (index,e) => {
+        e.preventDefault()
         updateTodo(index, editText)
         setEditingId(null)
     }
@@ -24,7 +25,7 @@ const Display = () => {
         if (editingId === index) {
             console.log(index, editingId)
             return (
-                <div>
+                <form>
                     <input
                         type="text"
                         value={editText}
@@ -32,9 +33,9 @@ const Display = () => {
                         className='p-1 rounded-md outline-none border-none mb-2 w-60'
                     />
                     <br />
-                    <button onClick={() => saveAndExit(index)} className="cursor-pointer text-sm py-1 px-2 rounded-md border-none bg-darkPink hover:bg-lightPink transition-colors duration-500 mr-1.5">Save</button>
+                    <button onClick={(e) => saveAndExit(index,e)} className="cursor-pointer text-sm py-1 px-2 rounded-md border-none bg-darkPink hover:bg-lightPink transition-colors duration-500 mr-1.5">Save</button>
                     <button onClick={() => setEditingId(null)} className="cursor-pointer text-sm py-1 px-2 rounded-md border-none bg-darkPink hover:bg-lightPink transition-colors duration-500 ">Cancel</button>
-                </div>
+                </form>
             );
         }
 
@@ -43,7 +44,7 @@ const Display = () => {
                 {editingId === null ? <div className='flex items-center gap-2 justify-between'>
                     <div className='flex gap-2 items-center'>
                         <input type='checkbox' checked={todo.completed} onChange={() => toggleTodo(index)} className="cursor-pointer w-4 h-4 text-purple" />
-                        <p className='w-32' style={{width:'100px',overflow:'scroll'}} onDoubleClick={() => enterEditMode(todo, index)}>{todo.text}</p>
+                        <p className='w-32' style={{ textDecoration: todo.completed ? "line-through" : "none" }} onDoubleClick={() => enterEditMode(todo, index)}>{todo.text}</p>
                     </div>
                     {/* <button onClick={() => {  }} className="cursor-pointer">Edit</button> */}
 
