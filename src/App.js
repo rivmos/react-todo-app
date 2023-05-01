@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className='flex flex-col justify-center items-center h-screen'>
-      <div className='p-10 rounded-xl bg-lightBlue'>
+      <div className='flex flex-col items-center w-1/5 rounded-xl bg-lightBlue py-10 '>
         <TodoForm />
         <Display />
         <Export />
