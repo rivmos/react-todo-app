@@ -8,9 +8,11 @@ const App = () => {
 
   return (
     <div className='flex flex-col justify-center items-center h-screen'>
-      <div className='flex flex-col items-center w-1/5 rounded-xl bg-lightBlue py-10 '>
+      <div className='flex flex-col items-center px-16 rounded-xl bg-lightBlue py-4'>
         <TodoForm />
         <Display />
+      </div>
+      <div className='mt-3 ml-[-300px]'>
         <Export />
       </div>
     </div>

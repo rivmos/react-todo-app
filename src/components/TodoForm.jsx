@@ -4,10 +4,11 @@ import { TodoContext } from '../context/TodoContext'
 
 const TodoForm = () => {
     const { addTodo } = useContext(TodoContext)
-    const [newTodo, setNewTodo] = useState({ text: '', completed: false })
+    const [newTodo, setNewTodo] = useState({id:'', text: '', completed: false })
     const handleAdd = (e) => {
+        const todoToBeAdded = {...newTodo, id:Math.floor(Math.random()*(100000 - 100 + 1) + 100)}
         e.preventDefault()
-        addTodo(newTodo)
+        addTodo(todoToBeAdded)
         setNewTodo({ text: '', completed: false })
     }
     return (
