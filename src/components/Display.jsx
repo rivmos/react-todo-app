@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { TodoContext } from '../context/TodoContext'
+import Export from './Export'
 
 const Display = () => {
     const { todos, deleteTodo, updateTodo, toggleComplete } = useContext(TodoContext)
@@ -52,7 +53,7 @@ const Display = () => {
                 {editingId === null ? <div className='flex items-center gap-4 justify-between bg-darkBlue px-6 py-3 rounded-md'>
                     <div className='flex gap-4 items-center'>
                         <input type='checkbox' onChange={() => {handleSelection(todo.id)}} className="cursor-pointer" />
-                        <p className='w-[70%] break-words' style={{ textDecoration: todo.completed ? "line-through" : "none" }} onDoubleClick={() => enterEditMode(todo)}>{todo.text}</p>
+                        <p className='break-words' style={{ textDecoration: todo.completed ? "line-through" : "none" }} onDoubleClick={() => enterEditMode(todo)}>{todo.text}</p>
                     </div>
 
                     <button onClick={() => { deleteTodo(todo.id) }} className="cursor-pointer">
@@ -80,9 +81,10 @@ const Display = () => {
                     )
                 })
             }
-            <div className='flex justify-center gap-2 text-sm mt-8'>
-                <button onClick={() => { toggleComplete(selectedIds); setSelectedIds([]) }} className='p-1 rounded-md text-sm bg-darkPink hover:bg-darkBlue transition-colors duration-500'>Set Completed</button>
+            <div className='flex justify-center items-center gap-2 text-sm mt-8'>
+                <button onClick={() => { toggleComplete(selectedIds); setSelectedIds([]) }} className='p-1 px-2 rounded-md text-sm bg-darkPink hover:bg-darkBlue transition-colors duration-500'>Set Completed</button>
                 <button onClick={() => { setShowAll(!showAll) }} className='py-1 px-2 rounded-md text-sm bg-darkPink hover:bg-darkBlue transition-colors duration-500'>{showAll ? "Show Incomplete" : "Show All"}</button>
+                <Export />
             </div>
         </div>
     )
