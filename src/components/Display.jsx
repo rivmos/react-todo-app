@@ -49,10 +49,10 @@ const Display = () => {
 
         return (
             <>
-                {editingId === null ? <div className='flex items-center gap-2 justify-between'>
-                    <div className='flex gap-2 items-center'>
-                        <input type='checkbox' onChange={() => {handleSelection(todo.id)}} className="cursor-pointer w-4 h-4 text-purple" />
-                        <p className='w-32' style={{ textDecoration: todo.completed ? "line-through" : "none" }} onDoubleClick={() => enterEditMode(todo)}>{todo.text}</p>
+                {editingId === null ? <div className='flex items-center gap-4 justify-between bg-darkBlue px-6 py-3 rounded-md'>
+                    <div className='flex gap-4 items-center'>
+                        <input type='checkbox' onChange={() => {handleSelection(todo.id)}} className="cursor-pointer" />
+                        <p className='w-[70%] break-words' style={{ textDecoration: todo.completed ? "line-through" : "none" }} onDoubleClick={() => enterEditMode(todo)}>{todo.text}</p>
                     </div>
 
                     <button onClick={() => { deleteTodo(todo.id) }} className="cursor-pointer">
@@ -70,7 +70,7 @@ const Display = () => {
 
 
     return (
-        <div className='flex flex-col gap-1 mt-5 mb-5 w-[100%]'>
+        <div className='flex flex-col gap-3 mt-8 mb-5 w-[100%]'>
             {
                 todosToShow.map((todo) => {
                     return (
